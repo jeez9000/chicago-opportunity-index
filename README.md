@@ -1,367 +1,159 @@
-# 💕 Valentine's Day Romantic Website Template
+# 🏙️ Chicago Neighborhood Opportunity Index
 
-A beautiful, interactive Valentine's Day website template with parallax scrolling, photo timeline, mini-game, and invitation reveal. Built with Next.js 14, TypeScript, and optimized for easy deployment on Vercel.
+> A data-driven composite index scoring 1,328 census tracts across Cook County (Chicago) on economic strength, health outcomes, and housing stability.
 
-**Perfect for creating a personalized romantic gift for your special someone!**
+**Built by:** Joshua Mlongecha | University of Connecticut, B.S. Data Science 2028  
+**Stack:** Python · Pandas · GeoPandas · Scikit-learn · Streamlit · Folium  
+**Data:** U.S. Census ACS 5-Year (2022) · CDC PLACES (2023) · Census TIGER Shapefiles
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+---
 
-## 📚 Documentation
+## 📌 Project Overview
 
-- **[Setup Guide](SETUP.md)** - Complete step-by-step setup instructions
-- **[Quick Start](QUICKSTART.md)** - Get running in 5 minutes
-- **[Deployment Guide](DEPLOYMENT.md)** - Deploy to Vercel
-- **[Pre-Launch Checklist](CHECKLIST.md)** - Before you share with your valentine
+This project builds a **Neighborhood Opportunity Index** from scratch — pulling raw government data, engineering a composite scoring system, training a machine learning risk model, and deploying an interactive dashboard.
 
-## ✨ Features
+The index scores every census tract in Cook County across 12 socioeconomic and health variables, then uses a Random Forest model to classify neighborhoods as **Stable** or **At Risk**.
 
-- **Romantic Hero Section** with floating tulip petal animations
-- **Live Time Counter** showing days, hours, minutes, and seconds together (customizable timezone)
-- **Parallax Photo Timeline** with smooth scroll effects and milestone cards
-- **Interactive Tulip Catcher Game** - catch 10 tulips to unlock the invitation
-- **Beautiful Invitation Card** with calendar export and email response features
-- **Playful Escaping No Button** - the "No" button runs away from your cursor for extra fun!
-- **Fully Responsive** - works perfectly on mobile and desktop
-- **Lightweight & Fast** - optimized for excellent Lighthouse scores
-- **Easy Customization** - all settings in one config file
-- **No Database Required** - static site, easy to deploy
-- **TypeScript** - type-safe development experience
+**Key findings:**
+- 251 of 1,328 tracts (19%) classified as At Risk
+- Median household income and obesity rate are the strongest predictors of neighborhood risk
+- Health outcomes and economic indicators are nearly equally predictive — suggesting wealth and health are deeply linked at the neighborhood level
 
-## 🎥 Demo
+---
 
-> **Note**: See [SETUP.md](SETUP.md) for instructions on running a local demo
-
-Once deployed, your website will feature:
-1. A romantic landing page with animations
-2. Real-time counter of your time together
-3. Scrollable photo timeline with your memories
-4. Fun mini-game to unlock the invitation
-5. Beautiful invitation card with interactive features
-
-## � Screenshots
-
-### Desktop View
-<table>
-  <tr>
-    <td><img src="Screenshots/d1.png" alt="Hero Section" width="400"/><br/><b>Hero Section</b></td>
-    <td><img src="Screenshots/d2.png" alt="Time Counter" width="400"/><br/><b>Time Counter</b></td>
-  </tr>
-  <tr>
-    <td><img src="Screenshots/d3.png" alt="Photo Timeline" width="400"/><br/><b>Photo Timeline</b></td>
-    <td><img src="Screenshots/d4.png" alt="Tulip Catcher Game" width="400"/><br/><b>Tulip Catcher Game</b></td>
-  </tr>
-  <tr>
-    <td><img src="Screenshots/d5.png" alt="Game Victory" width="400"/><br/><b>Game Victory</b></td>
-    <td><img src="Screenshots/d6.png" alt="Invitation Card" width="400"/><br/><b>Invitation Card</b></td>
-  </tr>
-  <tr>
-    <td colspan="2"><img src="Screenshots/d7.png" alt="Escaping No Button" width="800"/><br/><b>Escaping No Button - Try to catch it!</b></td>
-  </tr>
-</table>
-
-### Mobile View
-<table>
-  <tr>
-    <td><img src="Screenshots/m1.jpg" alt="Mobile Hero" width="200"/><br/><b>Mobile Hero</b></td>
-    <td><img src="Screenshots/m2.jpg" alt="Mobile Counter" width="200"/><br/><b>Mobile Counter</b></td>
-    <td><img src="Screenshots/m3.jpg" alt="Mobile Timeline" width="200"/><br/><b>Mobile Timeline</b></td>
-  </tr>
-  <tr>
-    <td><img src="Screenshots/m4.jpg" alt="Mobile Game" width="200"/><br/><b>Mobile Game</b></td>
-    <td><img src="Screenshots/m5.jpg" alt="Mobile Invitation" width="200"/><br/><b>Mobile Invitation</b></td>
-    <td></td>
-  </tr>
-</table>
-
-## �🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 18+ installed
-- npm or yarn package manager
-
-### Installation
-
-1. **Clone or download this project**
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 📸 Adding Your Photos
-
-### Important: Photo Setup
-
-Your photos must be placed in the `/public/photos/` folder with the following naming convention:
+## 🗂️ Project Structure
 
 ```
-/public/photos/photo_1.jpg
-/public/photos/photo_2.jpg
-/public/photos/photo_3.jpg
-...
-/public/photos/photo_8.jpg
-```
-
-### Steps to Add Photos:
-
-1. Create the photos folder if it doesn't exist:
-   ```
-   /public/photos/
-   ```
-
-2. Add your photos with the exact naming pattern above
-
-3. Ensure photos are:
-   - **Format**: `.jpg`, `.jpeg`, or `.png`
-   - **Size**: Recommended max width 1200px for web optimization
-   - **Naming**: Must follow `photo_1.jpg`, `photo_2.jpg`, etc.
-
-4. Update the photo count in `/src/config/loveConfig.ts`:
-   ```typescript
-   photoCount: 8, // Change this to match your number of photos
-   ```
-
-### Photo Tips:
-- Use landscape or square photos for best display
-- Compress images before uploading (use [TinyPNG](https://tinypng.com/) or similar)
-- Photos will automatically pair with milestones in the timeline
-
-## ⚙️ Personalization
-
-### Edit Configuration File
-
-All personalization is done in one place: `/src/config/loveConfig.ts`
-
-Open this file and update:
-
-```typescript
-export const loveConfig = {
-  // Your names
-  yourName: "John Doe",
-  partnerName: "Jane Doe",
-  
-  // When your relationship started (Singapore time)
-  relationshipStart: "2023-05-18T00:00:00+08:00",
-  
-  // Valentine's date
-  valentineDate: "2026-02-14",
-  
-  // Hero section text
-  heroHeadline: "To My Dearest Valentine",
-  heroSubtext: "A journey through our moments together...",
-  
-  // Number of photos
-  photoCount: 8,
-  
-  // Your email for the "Send Answer" button
-  yourEmail: "your.email@example.com",
-  
-  // Milestones (update with your own memories)
-  milestones: [
-    {
-      title: "First Date",
-      date: "May 18, 2023",
-      description: "The day our story began..."
-    },
-    // Add more milestones here
-  ],
-  
-  // Invite details
-  inviteTime: "7:00 PM",
-  inviteLocation: "A romantic surprise awaits...",
-};
-```
-
-### What You Can Customize:
-
-✅ Names and dates  
-✅ All text content  
-✅ Number of photos  
-✅ Milestone titles, dates, and descriptions  
-✅ Invitation details  
-✅ Email for responses  
-
-## 📦 Deploying to Vercel
-
-### Option 1: Deploy via Vercel Dashboard (Easiest)
-
-1. **Create a Vercel account** at [vercel.com](https://vercel.com)
-
-2. **Import your project**:
-   - Click "New Project"
-   - Import from Git (GitHub/GitLab) or upload folder
-
-3. **Configure**:
-   - Framework: Next.js (auto-detected)
-   - Root Directory: `./`
-   - Build Command: `npm run build`
-   - Output Directory: `.next`
-
-4. **Deploy**:
-   - Click "Deploy"
-   - Wait 1-2 minutes for build
-   - Get your live URL!
-
-### Option 2: Deploy via Vercel CLI
-
-1. **Install Vercel CLI**:
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Login**:
-   ```bash
-   vercel login
-   ```
-
-3. **Deploy**:
-   ```bash
-   vercel
-   ```
-
-4. **Deploy to production**:
-   ```bash
-   vercel --prod
-   ```
-
-### After Deployment:
-
-- Your site will be live at: `https://your-project-name.vercel.app`
-- You can configure a custom domain in Vercel dashboard
-- Every push to main branch auto-deploys (if using Git integration)
-
-## 🎮 How the Website Works
-
-### User Journey:
-
-1. **Hero Section**: Beautiful landing with floating tulip petals
-2. **Time Counter**: Shows how long you've been together
-3. **Photo Timeline**: Scrollable parallax timeline of your memories
-4. **Mini Game**: Catch 10 falling tulips to unlock...
-5. **Invitation Reveal**: The big Valentine's Day invitation!
-6. **Response Options**:
-   - "Yes" button with celebration
-   - Add to Calendar (downloads .ics file)
-   - Send answer via email
-
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: CSS Modules + Custom CSS
-- **Deployment**: Vercel
-- **No external dependencies** for animations (pure CSS)
-
-## 📱 Browser Support
-
-- ✅ Chrome/Edge (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (iOS 14+, macOS)
-- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 🎨 Color Palette
-
-The site uses a tulip-inspired romantic color scheme:
-
-- Primary Red: `#E63946`
-- Pink: `#FF6B9D`
-- Accent Pink: `#FFB5C5`
-- Cream: `#FFF5F7`
-- Warm Cream: `#FFEEF2`
-
-## 📝 Project Structure
-
-```
-├── public/
-│   └── photos/              # Your photos go here (photo_1.jpg, photo_2.jpg, etc.)
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx       # Root layout
-│   │   ├── page.tsx         # Main page
-│   │   └── globals.css      # Global styles
-│   ├── components/
-│   │   ├── Hero.tsx         # Landing hero section
-│   │   ├── Hero.module.css
-│   │   ├── TimeCounter.tsx  # Time together counter
-│   │   ├── TimeCounter.module.css
-│   │   ├── ParallaxTimeline.tsx  # Photo timeline
-│   │   ├── ParallaxTimeline.module.css
-│   │   ├── TulipCatcher.tsx # Mini game
-│   │   ├── TulipCatcher.module.css
-│   │   ├── InviteCard.tsx   # Invitation reveal
-│   │   └── InviteCard.module.css
-│   └── config/
-│       └── loveConfig.ts    # All personalization settings
-├── package.json
-├── tsconfig.json
-├── next.config.js
+Neighborhood Health + Wealth Index/
+│
+├── data/
+│   ├── chicago_tracts_raw.csv              # Merged Census + CDC data
+│   ├── chicago_tracts_raw.geojson          # Geo data for mapping
+│   ├── chicago_opportunity_scores.csv      # Composite index scores
+│   ├── chicago_opportunity_scores.geojson  # Scored geo data
+│   ├── chicago_risk_predictions.csv        # ML model predictions
+│   └── cdc_places_cook.csv                 # Raw CDC PLACES data
+│
+├── plots/
+│   └── model_results.png                   # ML model evaluation charts
+│
+├── .streamlit/
+│   └── config.toml                         # Dashboard theme config
+│
+├── phase1_data_pipeline.py                 # Data collection & cleaning
+├── phase2_index_scoring.py                 # Composite index construction
+├── phase3_dashboard.py                     # Interactive Streamlit dashboard
+├── phase4_ml_model.py                      # ML risk classification model
 └── README.md
 ```
 
-## 🐛 Troubleshooting
+---
 
-### Photos not showing?
-- Check photos are in `/public/photos/`
-- Verify naming: `photo_1.jpg`, `photo_2.jpg`, etc.
-- Update `photoCount` in `loveConfig.ts`
-- Clear browser cache and refresh
+## 🔄 How to Reproduce
 
-### Time counter showing wrong time?
-- Verify `relationshipStart` date format in config
-- Must include timezone: `+08:00` for Singapore
+### 1. Clone the repo
+```bash
+git clone https://github.com/YOUR_USERNAME/chicago-opportunity-index.git
+cd chicago-opportunity-index
+```
 
-### Build errors on Vercel?
-- Ensure all photos exist before deploying
-- Check there are no TypeScript errors: `npm run build` locally
-- Verify `photoCount` matches actual number of photos
+### 2. Install dependencies
+```bash
+pip install requests pandas geopandas scikit-learn matplotlib seaborn streamlit folium streamlit-folium
+```
 
-### Game not working on mobile?
-- Ensure touch events are enabled
-- Try a different browser
-- Clear cache and reload
+### 3. Add your Census API key
+Get a free key at [census.gov/developers](https://api.census.gov/data/key_signup.html).  
+Open `phase1_data_pipeline.py` and replace:
+```python
+CENSUS_API_KEY = "your_key_here"
+```
 
-## 💝 Tips for the Perfect Experience
+### 4. Download CDC PLACES data
+```bash
+mkdir data
+curl -o data/cdc_places_cook.csv "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"
+```
 
-1. **Photo Selection**: Choose your best memories - quality over quantity!
-2. **Milestones**: Write heartfelt descriptions - this is your love story
-3. **Timing**: Deploy a few days before Valentine's to test
-4. **Mobile Test**: Always test on actual phone before sending
-5. **Personal Touch**: Customize every text field to make it uniquely yours
+### 5. Run the pipeline
+```bash
+python3 phase1_data_pipeline.py    # Pull & merge data
+python3 phase2_index_scoring.py    # Build composite index
+python3 phase4_ml_model.py         # Train ML model
+streamlit run phase3_dashboard.py  # Launch dashboard
+```
 
-## 📧 Support
+---
 
-If you encounter any issues:
-1. Check this README thoroughly
-2. Verify your `loveConfig.ts` settings
-3. Test locally with `npm run dev` before deploying
-4. Check browser console for errors (F12)
+## 📊 Data Sources
 
-## 🎁 Final Notes
+| Source | Description | Geography |
+|--------|-------------|-----------|
+| U.S. Census ACS 5-Year (2022) | Income, poverty, unemployment, education, housing | Census tract |
+| CDC PLACES (2023) | Diabetes, obesity, mental health, physical inactivity, uninsured rate | Census tract |
+| Census TIGER/Line Shapefiles | Geographic boundaries for mapping | Census tract |
 
-This website template is designed to be a heartfelt, personal gift. Take your time to:
-- Choose meaningful photos
-- Write genuine milestone descriptions
-- Test everything before sharing
-- Consider the moment when you'll send the link
+---
 
-**Remember**: The most important part is the thought and effort you put into personalizing this for your special someone. 💕
+## 🧮 Index Methodology
 
-## 📄 License
+The Opportunity Index is a **weighted composite score (0–100)** built from 12 variables across three domains:
 
-MIT License - feel free to use this template for your personal romantic projects!
+| Domain | Variables | Weight |
+|--------|-----------|--------|
+| **Economic** (50%) | Median income, poverty rate, unemployment, education, home values | 50% |
+| **Health** (35%) | Diabetes, obesity, mental health, physical inactivity, uninsured | 35% |
+| **Housing** (15%) | Renter rate, population density | 15% |
 
+Each variable is min-max normalized to 0–1. Variables where higher = worse (e.g. poverty rate) are inverted before weighting.
 
-Made with ❤️ for spreading love
+**Opportunity Tiers:**
+- 🟢 Very High: 80–100
+- 🟢 High: 65–80
+- 🟡 Moderate: 45–65
+- 🟠 Low: 25–45
+- 🔴 Very Low: 0–25
 
-**Happy Valentine's Day!** 🌷💕
+---
+
+## 🤖 Machine Learning Model
+
+A **Random Forest classifier** (200 estimators) predicts neighborhood risk using all 12 socioeconomic and health features.
+
+**Results:**
+| Model | AUC | CV AUC |
+|-------|-----|--------|
+| Random Forest | 0.993 | 0.996 |
+| Gradient Boosting | 0.997 | 0.997 |
+| Logistic Regression | 1.000 | 1.000 |
+
+**Top predictive features:**
+1. Median household income (19.6%)
+2. Obesity rate (18.7%)
+3. Poor mental health rate (18.6%)
+4. Diabetes rate (13.7%)
+
+> **Note:** The high AUC scores reflect that the features used to predict risk are closely related to the composite index itself. In a production setting, this model would be retrained on lagged data to predict future risk.
+
+---
+
+## 🗺️ Dashboard Features
+
+- Interactive choropleth map of all 1,328 Cook County census tracts
+- Color-coded by opportunity tier with hover tooltips
+- Filter by tier and score range
+- Analytics tab with score distribution charts
+- Sortable data table with CSV export
+- Dark professional theme
+
+---
+
+## 📬 Contact
+
+**Joshua Mlongecha**  
+University of Connecticut · B.S. Data Science, Class of 2028  
+📧 jomlongecha@gmail.com
+
+---
+
+*Data is for portfolio and research purposes only. All sources are publicly available U.S. government datasets.*
