@@ -1,1 +1,3 @@
 data/cdc_places_cook.csv
+data/chicago_tracts_raw.geojson
+data/chicago_opportunity_scores.geojson
